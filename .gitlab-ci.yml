@@ -42,8 +42,8 @@ deploy_staging:
     - git push heroku master
     - echo "Deployed to staging server"
   environment:
-  name: staging
-  url: https://node-ci-cd-demo-staging.herokuapp.com/
+    name: staging
+    url: https://node-ci-cd-demo-staging.herokuapp.com/
   only:
     - staging
 
@@ -54,8 +54,8 @@ deploy_production:
     - git push heroku master
     - echo "Deployed to production server"
   environment:
-  name: production
-  url: https://node-ci-cd-demo.herokuapp.com/
+    name: production
+    url: https://node-ci-cd-demo.herokuapp.com/
   when: manual
   only:
     - master
