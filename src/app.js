@@ -4,7 +4,7 @@ import debug from 'debug';
 const app = express();
 const log = debug('app');
 
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+export const capitalize = (str = '') => str.charAt(0).toUpperCase() + str.slice(1);
 
 app.get('/hello', (req, res) => {
   const { name } = req.query;
@@ -14,3 +14,5 @@ app.get('/hello', (req, res) => {
 app.listen(3000, () => {
   log('server listening on port 3000');
 });
+
+export default app;

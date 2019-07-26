@@ -7,12 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --require @babel/register",
+    "test": "mocha --require @babel/register --exit",
     "lint": "eslint ./src",
     "dev": "DEBUG=app,app:* nodemon --exec babel-node ./src/app.js",
     "clean": "rm -rf dist",
     "build": "npm run clean && babel src --out-dir ./dist --source-maps",
-    "start": "npm run build && node ./dist/app.js"
+    "serve": "node ./dist/app.js",
+    "start": "npm run build && npm run serve"
   },
   "author": "scandar",
   "license": "ISC",
@@ -26,6 +27,8 @@
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
