@@ -38,8 +38,8 @@ build_stage:
 deploy_staging:
   stage: deploy
   script:
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo-staging.git
-    - git push heroku master
+    - git remote add heroku_staging https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo-staging.git
+    - git push heroku_staging HEAD:master
     - echo "Deployed to staging server"
   environment:
     name: staging
@@ -51,7 +51,7 @@ deploy_production:
   stage: deploy
   script:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo.git
-    - git push heroku master
+    - git push heroku HEAD:master
     - echo "Deployed to production server"
   environment:
     name: production
