@@ -9,7 +9,7 @@ cache:
     - node_modules/
 
 lint_stage:
-  image: node:latest-alpine
+  image: node:current-alpine
 
   stage: lint
   script:
@@ -18,14 +18,14 @@ lint_stage:
     - merge_requests
 
 test_stage:
-  image: node:latest-alpine
+  image: node:current-alpine
   stage: test
   script: npm test
   only:
     - merge_requests
 
 build_stage:
-  image: node:latest-alpine
+  image: node:current-alpine
   stage: build
   script:
     - npm install
