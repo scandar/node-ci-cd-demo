@@ -1,4 +1,4 @@
-image: mhart/alpine-node:latest
+image: node:latest
 
 stages:
   - lint
