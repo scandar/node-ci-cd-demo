@@ -7,11 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=app,app:* nodemon bin/dev",
+    "test": "mocha --require @babel/register",
+    "lint": "eslint ./src",
+    "dev": "DEBUG=app,app:* nodemon --exec babel-node ./src/app.js",
     "clean": "rm -rf dist",
-    "build": "npm run clean && mkdir dist && babel src -s -d dist",
-    "start": "npm run build && DEBUG=app node bin/production"
+    "build": "npm run clean && babel src --out-dir ./dist --source-maps",
+    "start": "npm run build && node ./dist/app.js"
   },
   "author": "scandar",
   "license": "ISC",
@@ -20,15 +21,15 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.6",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1"
   }
 }
