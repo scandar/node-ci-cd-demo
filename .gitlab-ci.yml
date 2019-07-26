@@ -2,8 +2,8 @@ image: node:latest
 
 stages:
   - lint
-  - build
   - test
+  - build
 
 cache:
   paths:
@@ -14,6 +14,10 @@ lint_stage:
   script:
     - npm run lint
 
+test_stage:
+  stage: test
+  script: npm test
+
 build_stage:
   stage: build
   script:
@@ -22,7 +26,4 @@ build_stage:
   artifacts:
       paths:
         - dist/
-
-test_stage:
-  stage: test
-  script: npm test
+      expire_in: 2 weeks
