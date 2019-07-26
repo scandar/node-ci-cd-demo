@@ -10,7 +10,7 @@ cache:
     - node_modules/
 
 lint_stage:
-  stage: build
+  stage: lint
   script:
     - npm run lint
 
