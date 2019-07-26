@@ -19,6 +19,9 @@ build_stage:
   script:
     - npm install
     - npm run build
+  artifacts:
+      paths:
+        - dist/
 
 test_stage:
   stage: test
