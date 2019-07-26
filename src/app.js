@@ -1,6 +1,7 @@
 import express from 'express';
 import debug from 'debug';
 
+const port = process.env.PORT || 3000;
 const app = express();
 const log = debug('app');
 
@@ -11,8 +12,8 @@ app.get('/hello', (req, res) => {
   return res.json({ message: `Hello ${capitalize(name) || 'World'}!` });
 });
 
-app.listen(3000, () => {
-  log('server listening on port 3000');
+app.listen(port, () => {
+  log(`server listening on port ${port}`);
 });
 
 export default app;
