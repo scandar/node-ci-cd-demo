@@ -1,5 +1,3 @@
-image: node:latest
-
 stages:
   - lint
   - test
@@ -11,6 +9,8 @@ cache:
     - node_modules/
 
 lint_stage:
+  image: node:current-alpine
+
   stage: lint
   script:
     - npm run lint
@@ -18,12 +18,14 @@ lint_stage:
     - merge_requests
 
 test_stage:
+  image: node:current-alpine
   stage: test
   script: npm test
   only:
     - merge_requests
 
 build_stage:
+  image: node:current-alpine
   stage: build
   script:
     - npm install
@@ -36,6 +38,7 @@ build_stage:
     - master
 
 deploy_staging:
+  image: node:latest
   stage: deploy
   script:
     - git remote add heroku_staging https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo-staging.git
@@ -48,6 +51,7 @@ deploy_staging:
     - staging
 
 deploy_production:
+  image: node:latest
   stage: deploy
   script:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo.git
