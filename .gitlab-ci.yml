@@ -13,10 +13,14 @@ lint_stage:
   stage: lint
   script:
     - npm run lint
+  only:
+    - merge_requests
 
 test_stage:
   stage: test
   script: npm test
+  only:
+    - merge_requests
 
 build_stage:
   stage: build
@@ -27,3 +31,5 @@ build_stage:
       paths:
         - dist/
       expire_in: 2 weeks
+  only:
+    - master
