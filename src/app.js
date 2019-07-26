@@ -7,7 +7,7 @@ const log = debug('app');
 export const capitalize = (str = '') => str.charAt(0).toUpperCase() + str.slice(1);
 
 app.get('/hello', (req, res) => {
-  const { name } = req.query
+  const { name } = req.query;
   return res.json({ message: `Hello ${capitalize(name) || 'World'}!` });
 });
 
