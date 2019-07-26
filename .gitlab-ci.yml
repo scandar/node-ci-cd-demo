@@ -1,6 +1,7 @@
 image: node:latest
 
 stages:
+  - lint
   - build
   - test
 
@@ -8,14 +9,17 @@ cache:
   paths:
     - node_modules/
 
-install_dependencies:
+lint_stage:
+  stage: build
+  script:
+    - npm run lint
+
+build_stage:
   stage: build
   script:
     - npm install
-  artifacts:
-    paths:
-      - node_modules/
+    - npm run build
 
-testing_testing:
+test_stage:
   stage: test
   script: npm test
