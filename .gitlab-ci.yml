@@ -4,6 +4,7 @@ stages:
   - lint
   - test
   - build
+  - deploy
 
 cache:
   paths:
@@ -31,5 +32,30 @@ build_stage:
       paths:
         - dist/
       expire_in: 2 weeks
+  only:
+    - master
+
+deploy_staging:
+  stage: deploy
+  script:
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo-staging.git
+    - git push heroku master
+    - echo "Deployed to staging server"
+  environment:
+  name: staging
+  url: https://node-ci-cd-demo-staging.herokuapp.com/
+  only:
+    - staging
+
+deploy_production:
+  stage: deploy
+  script:
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/node-ci-cd-demo.git
+    - git push heroku master
+    - echo "Deployed to production server"
+  environment:
+  name: production
+  url: https://node-ci-cd-demo.herokuapp.com/
+  when: manual
   only:
     - master
