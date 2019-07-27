@@ -1,5 +1,5 @@
 stages:
-  - install_dependecies
+  - init
   - lint
   - test
   - build
@@ -9,15 +9,14 @@ cache:
   paths:
     - node_modules/
 
-install_dependecies_stage:
+init:
   image: node:current-alpine
-  stage: install_dependecies
+  stage: init
   script:
     - npm install
 
 lint_stage:
   image: node:current-alpine
-
   stage: lint
   script:
     - npm run lint
