@@ -11,7 +11,7 @@ cache:
 
 install_dependecies_stage:
   image: node:current-alpine
-  stage: build
+  stage: install_dependecies
   script:
     - npm install
 
