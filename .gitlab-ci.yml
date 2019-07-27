@@ -14,6 +14,10 @@ init:
   stage: init
   script:
     - npm install
+  only:
+    - master
+    - staging
+    - merge_requests
 
 lint_stage:
   image: node:current-alpine
