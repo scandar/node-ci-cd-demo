@@ -1,4 +1,5 @@
 stages:
+  - init
   - lint
   - test
   - build
@@ -8,9 +9,18 @@ cache:
   paths:
     - node_modules/
 
+init:
+  image: node:current-alpine
+  stage: init
+  script:
+    - npm install
+  only:
+    - master
+    - staging
+    - merge_requests
+
 lint_stage:
   image: node:current-alpine
-
   stage: lint
   script:
     - npm run lint
@@ -20,7 +30,9 @@ lint_stage:
 test_stage:
   image: node:current-alpine
   stage: test
-  script: npm test
+  script:
+    - npm run coverage
+    - npm test
   only:
     - merge_requests
 
@@ -28,7 +40,6 @@ build_stage:
   image: node:current-alpine
   stage: build
   script:
-    - npm install
     - npm run build
   artifacts:
       paths:

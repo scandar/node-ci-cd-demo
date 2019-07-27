@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "mocha --require @babel/register --exit",
+    "coverage": "nyc npm run test",
     "lint": "eslint ./src",
     "dev": "DEBUG=app,app:* nodemon --exec babel-node ./src/app.js",
     "clean": "rm -rf dist",
@@ -33,6 +34,7 @@
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "mocha": "^6.2.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1"
   }
 }
