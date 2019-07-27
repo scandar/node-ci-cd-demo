@@ -20,7 +20,9 @@ lint_stage:
 test_stage:
   image: node:current-alpine
   stage: test
-  script: npm test
+  script:
+    - npm run coverage
+    - npm test
   only:
     - merge_requests
 

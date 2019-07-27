@@ -44,3 +44,17 @@ describe('/GET hello with query params', () => {
     response.message.should.equal(`Hello ${capitalize(name)}!`);
   });
 });
+
+describe('capitalization', () => {
+  it('capitalizes the first character of a string', () => {
+    capitalize('word').should.equal('Word');
+  });
+
+  it('doesn\'t fail with non-strings', () => {
+    capitalize(2).should.equal(2);
+  });
+
+  it('doesn\'t fail with no parameters', () => {
+    capitalize().should.equal('');
+  });
+});
